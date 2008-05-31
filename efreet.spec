@@ -2,6 +2,8 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
+%define		ecore_ver	0.9.9
+
 Summary:	freedesktop.org standards implementation for the EFL
 Summary(pl.UTF-8):	Implementacja standardów freedesktop.org dla EFL
 Name:		efreet
@@ -15,11 +17,11 @@ URL:		http://enlightenment.org/p.php?p=about/libs/efreet
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1.4
 # ecore-file; ecore-desktop for tests
-BuildRequires:	ecore-devel >= 0.9.9
+BuildRequires:	ecore-devel >= %{ecore_ver}
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	sed >= 4.0
-Requires:	ecore-file >= 0.9.9
+Requires:	ecore-file >= %{ecore_ver}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -56,7 +58,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe Efreet
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 # ecore-file
-BuildRequires:	ecore-devel >= 0.9.9
+BuildRequires:	ecore-devel >= %{ecore_ver}
 
 %description devel
 Header files for Efreet.
