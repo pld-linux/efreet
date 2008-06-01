@@ -2,17 +2,17 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
-%define		ecore_ver	0.9.9
+%define		ecore_ver	0.9.9.043
 
 Summary:	freedesktop.org standards implementation for the EFL
 Summary(pl.UTF-8):	Implementacja standardów freedesktop.org dla EFL
 Name:		efreet
-Version:	0.0.3.002
+Version:	0.5.0.043
 Release:	1
 License:	BSD
 Group:		X11/Libraries
-Source0:	http://enlightenment.freedesktop.org/files/%{name}-%{version}.tar.gz
-# Source0-md5:	e39b686b04cfa3ef634efe8f95858daf
+Source0:	http://download.enlightenment.org/snapshots/2008-05-19/%{name}-%{version}.tar.bz2
+# Source0-md5:	430493b0b3ac8d2221d94c653cf75163
 URL:		http://enlightenment.org/p.php?p=about/libs/efreet
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1.4
@@ -100,9 +100,8 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 # just tests
-rm $RPM_BUILD_ROOT%{_bindir}/efreet_{alloc,menu_alloc,test,spec_test,cache_test}
-rm $RPM_BUILD_ROOT%{_bindir}/{ecore_alloc,compare_results}
-rm -r $RPM_BUILD_ROOT%{_datadir}/%{name}/test
+rm -f $RPM_BUILD_ROOT%{_bindir}/efreet_{alloc,menu_alloc,test,spec_test,cache_test}
+rm -rf $RPM_BUILD_ROOT%{_datadir}/%{name}/test
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -113,18 +112,17 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING README TODO
-%attr(755,root,root) %{_libdir}/libefreet.so.*.*.*
+%attr(755,root,root) %{_libdir}/libefreet*.so.*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/efreet-config
-%attr(755,root,root) %{_libdir}/libefreet.so
-%{_libdir}/libefreet.la
+%attr(755,root,root) %{_libdir}/libefreet*.so
+%{_libdir}/libefreet*.la
 %{_includedir}/efreet
-%{_pkgconfigdir}/efreet.pc
+%{_pkgconfigdir}/efreet*.pc
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libefreet.a
+%{_libdir}/libefreet*.a
 %endif
