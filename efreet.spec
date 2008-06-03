@@ -14,8 +14,8 @@ Group:		X11/Libraries
 Source0:	http://download.enlightenment.org/snapshots/2008-05-19/%{name}-%{version}.tar.bz2
 # Source0-md5:	430493b0b3ac8d2221d94c653cf75163
 URL:		http://enlightenment.org/p.php?p=about/libs/efreet
-BuildRequires:	autoconf
-BuildRequires:	automake >= 1.4
+BuildRequires:	autoconf >= 2.52
+BuildRequires:	automake >= 1.6
 # ecore-file; ecore-desktop for tests
 BuildRequires:	ecore-devel >= %{ecore_ver}
 BuildRequires:	libtool
@@ -112,17 +112,24 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING README TODO
-%attr(755,root,root) %{_libdir}/libefreet*.so.*
+%attr(755,root,root) %{_libdir}/libefreet.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libefreet.so.0
+%attr(755,root,root) %{_libdir}/libefreet_mime.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libefreet_mime.so.0
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libefreet*.so
-%{_libdir}/libefreet*.la
+%attr(755,root,root) %{_libdir}/libefreet.so
+%attr(755,root,root) %{_libdir}/libefreet_mime.so
+%{_libdir}/libefreet.la
+%{_libdir}/libefreet_mime.la
 %{_includedir}/efreet
-%{_pkgconfigdir}/efreet*.pc
+%{_pkgconfigdir}/efreet.pc
+%{_pkgconfigdir}/efreet-mime.pc
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libefreet*.a
+%{_libdir}/libefreet.a
+%{_libdir}/libefreet_mime.a
 %endif
