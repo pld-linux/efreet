@@ -2,17 +2,18 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
-%define		ecore_ver	0.9.9.043
+%define		_snap	20080813
+%define		ecore_ver	0.9.9.044
 
 Summary:	freedesktop.org standards implementation for the EFL
 Summary(pl.UTF-8):	Implementacja standardów freedesktop.org dla EFL
 Name:		efreet
-Version:	0.5.0.043
-Release:	1
+Version:	0.5.0.045
+Release:	0.%{_snap}.1
 License:	BSD
 Group:		X11/Libraries
-Source0:	http://download.enlightenment.org/snapshots/2008-05-19/%{name}-%{version}.tar.bz2
-# Source0-md5:	430493b0b3ac8d2221d94c653cf75163
+Source0:	%{name}-%{version}-%{_snap}.tar.bz2
+# Source0-md5:	1625909f41a65cd71648c8b87e33b94a
 URL:		http://enlightenment.org/p.php?p=about/libs/efreet
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.6
@@ -79,7 +80,7 @@ Static Efreet library.
 Statyczna biblioteka Efreet.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-%{_snap}
 
 sed -i -e 's/-g -O0//' src/lib/Makefile.am
 
@@ -116,20 +117,26 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libefreet.so.0
 %attr(755,root,root) %{_libdir}/libefreet_mime.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libefreet_mime.so.0
+%attr(755,root,root) %{_libdir}/libefreet_trash.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libefreet_trash.so.0
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libefreet.so
 %attr(755,root,root) %{_libdir}/libefreet_mime.so
+%attr(755,root,root) %{_libdir}/libefreet_trash.so
 %{_libdir}/libefreet.la
 %{_libdir}/libefreet_mime.la
+%{_libdir}/libefreet_trash.la
 %{_includedir}/efreet
 %{_pkgconfigdir}/efreet.pc
 %{_pkgconfigdir}/efreet-mime.pc
+%{_pkgconfigdir}/efreet-trash.pc
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libefreet.a
 %{_libdir}/libefreet_mime.a
+%{_libdir}/libefreet_trash.a
 %endif
