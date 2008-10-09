@@ -2,18 +2,17 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
-%define		_snap	20080813
-%define		ecore_ver	0.9.9.044
+%define		ecore_ver	0.9.9.050
 
 Summary:	freedesktop.org standards implementation for the EFL
 Summary(pl.UTF-8):	Implementacja standardów freedesktop.org dla EFL
 Name:		efreet
-Version:	0.5.0.045
-Release:	0.%{_snap}.1
+Version:	0.5.0.050
+Release:	0.1
 License:	BSD
 Group:		X11/Libraries
-Source0:	%{name}-%{version}-%{_snap}.tar.bz2
-# Source0-md5:	1625909f41a65cd71648c8b87e33b94a
+Source0:	http://download.enlightenment.org/snapshots/2008-09-25/%{name}-%{version}.tar.bz2
+# Source0-md5:	852d10cfc5de43486727fe35c3e01d1d
 URL:		http://enlightenment.org/p.php?p=about/libs/efreet
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.6
@@ -80,7 +79,7 @@ Static Efreet library.
 Statyczna biblioteka Efreet.
 
 %prep
-%setup -q -n %{name}-%{version}-%{_snap}
+%setup -q -n %{name}-%{version}
 
 sed -i -e 's/-g -O0//' src/lib/Makefile.am
 
