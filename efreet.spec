@@ -79,7 +79,7 @@ Static Efreet library.
 Statyczna biblioteka Efreet.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 sed -i -e 's/-g -O0//' src/lib/Makefile.am
 
