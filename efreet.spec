@@ -2,17 +2,19 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
-%define		ecore_ver	0.9.9.050
+%define		ecore_ver	0.9.9.49898
+%define		snapdate	2010-06-27
+%define		svn		-ver-svn-06
 
 Summary:	freedesktop.org standards implementation for the EFL
 Summary(pl.UTF-8):	Implementacja standardów freedesktop.org dla EFL
 Name:		efreet
-Version:	0.5.0.050
+Version:	0.5.0.49898
 Release:	0.1
-License:	BSD
+License:	LGPL v2.1
 Group:		X11/Libraries
-Source0:	http://download.enlightenment.org/snapshots/2008-09-25/%{name}-%{version}.tar.bz2
-# Source0-md5:	029accd22bb5b014866dedc38269c82c
+Source0:	http://download.enlightenment.org/snapshots/%{snapdate}/%{name}-%{version}.tar.bz2
+# Source0-md5:	28a45a199332ff1183c9d8b352286b1e
 URL:		http://enlightenment.org/p.php?p=about/libs/efreet
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.6
@@ -91,7 +93,7 @@ sed -i -e 's/-g -O0//' src/lib/Makefile.am
 %{__automake}
 %configure \
 	%{!?with_static_libs:--disable-static}
-%{__make}
+%{__make} V=1
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -112,12 +114,12 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING README TODO
-%attr(755,root,root) %{_libdir}/libefreet.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libefreet.so.0
-%attr(755,root,root) %{_libdir}/libefreet_mime.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libefreet_mime.so.0
-%attr(755,root,root) %{_libdir}/libefreet_trash.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libefreet_trash.so.0
+%attr(755,root,root) %{_libdir}/libefreet%{svn}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libefreet%{svn}.so.0
+%attr(755,root,root) %{_libdir}/libefreet_mime%{svn}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libefreet_mime%{svn}.so.0
+%attr(755,root,root) %{_libdir}/libefreet_trash%{svn}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libefreet_trash%{svn}.so.0
 
 %files devel
 %defattr(644,root,root,755)
