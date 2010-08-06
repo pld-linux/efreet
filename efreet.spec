@@ -3,7 +3,6 @@
 %bcond_without	static_libs	# don't build static library
 #
 %define		ecore_ver	0.9.9.49898
-%define		snapdate	2010-06-27
 %define		svn		-ver-svn-06
 
 Summary:	freedesktop.org standards implementation for the EFL
@@ -13,7 +12,7 @@ Version:	0.5.0.49898
 Release:	0.1
 License:	LGPL v2.1
 Group:		X11/Libraries
-Source0:	http://download.enlightenment.org/snapshots/%{snapdate}/%{name}-%{version}.tar.bz2
+Source0:	http://download.enlightenment.org/snapshots/LATEST/%{name}-%{version}.tar.bz2
 # Source0-md5:	28a45a199332ff1183c9d8b352286b1e
 URL:		http://enlightenment.org/p.php?p=about/libs/efreet
 BuildRequires:	autoconf >= 2.52
