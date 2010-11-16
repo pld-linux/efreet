@@ -2,18 +2,19 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
-%define		ecore_ver	0.9.9.49898
-%define		svn		-ver-svn-06
+%define		ecore_ver	1.0.0
+%define		svn		%{nil}
 
 Summary:	freedesktop.org standards implementation for the EFL
 Summary(pl.UTF-8):	Implementacja standardów freedesktop.org dla EFL
 Name:		efreet
-Version:	0.5.0.49898
-Release:	0.1
+%define	subver	beta2
+Version:	1.0.0
+Release:	0.%{subver}.1
 License:	LGPL v2.1
 Group:		X11/Libraries
-Source0:	http://download.enlightenment.org/snapshots/LATEST/%{name}-%{version}.tar.bz2
-# Source0-md5:	28a45a199332ff1183c9d8b352286b1e
+Source0:	http://download.enlightenment.org/releases/%{name}-%{version}.%{subver}.tar.bz2
+# Source0-md5:	75c36c92d09f3d8737ce10cabe6a1535
 URL:		http://enlightenment.org/p.php?p=about/libs/efreet
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.6
@@ -80,7 +81,7 @@ Static Efreet library.
 Statyczna biblioteka Efreet.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}.%{subver}
 
 sed -i -e 's/-g -O0//' src/lib/Makefile.am
 
@@ -114,11 +115,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING README TODO
 %attr(755,root,root) %{_libdir}/libefreet%{svn}.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libefreet%{svn}.so.0
+%attr(755,root,root) %ghost %{_libdir}/libefreet%{svn}.so.1
 %attr(755,root,root) %{_libdir}/libefreet_mime%{svn}.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libefreet_mime%{svn}.so.0
+%attr(755,root,root) %ghost %{_libdir}/libefreet_mime%{svn}.so.1
 %attr(755,root,root) %{_libdir}/libefreet_trash%{svn}.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libefreet_trash%{svn}.so.0
+%attr(755,root,root) %ghost %{_libdir}/libefreet_trash%{svn}.so.1
 
 %files devel
 %defattr(644,root,root,755)
@@ -128,7 +129,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libefreet.la
 %{_libdir}/libefreet_mime.la
 %{_libdir}/libefreet_trash.la
-%{_includedir}/efreet
+%dir %{_includedir}/efreet-1
+%{_includedir}/efreet-1/*.h
 %{_pkgconfigdir}/efreet.pc
 %{_pkgconfigdir}/efreet-mime.pc
 %{_pkgconfigdir}/efreet-trash.pc
