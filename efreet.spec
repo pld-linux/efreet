@@ -8,13 +8,13 @@
 Summary:	freedesktop.org standards implementation for the EFL
 Summary(pl.UTF-8):	Implementacja standardów freedesktop.org dla EFL
 Name:		efreet
-%define	subver	beta2
+%define	subver	beta3
 Version:	1.0.0
 Release:	0.%{subver}.1
 License:	BSD
 Group:		X11/Libraries
 Source0:	http://download.enlightenment.org/releases/%{name}-%{version}.%{subver}.tar.bz2
-# Source0-md5:	75c36c92d09f3d8737ce10cabe6a1535
+# Source0-md5:	2e79009e049613dfbfe3801e264937ca
 URL:		http://enlightenment.org/p.php?p=about/libs/efreet
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.6
