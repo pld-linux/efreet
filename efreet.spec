@@ -9,7 +9,7 @@ Summary:	freedesktop.org standards implementation for the EFL
 Summary(pl.UTF-8):	Implementacja standardów freedesktop.org dla EFL
 Name:		efreet
 Version:	1.0.0
-Release:	1
+Release:	2
 License:	BSD
 Group:		X11/Libraries
 Source0:	http://download.enlightenment.org/releases/%{name}-%{version}.tar.bz2
