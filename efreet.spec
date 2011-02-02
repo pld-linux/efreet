@@ -14,7 +14,7 @@ License:	BSD
 Group:		X11/Libraries
 Source0:	http://download.enlightenment.org/releases/%{name}-%{version}.tar.bz2
 # Source0-md5:	e0ac8c2598003fea833a85de8a3efe26
-URL:		http://enlightenment.org/p.php?p=about/libs/efreet
+URL:		http://trac.enlightenment.org/e/wiki/Efreet
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.6
 BuildRequires:	ecore-devel >= %{ecore_ver}
