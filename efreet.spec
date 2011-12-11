@@ -2,29 +2,32 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
-%define		ecore_ver	1.0.0
-%define		eet_ver		1.4.0
+%define		ecore_ver	1.1.0
+%define		eina_ver	1.1.0
+%define		eet_ver		1.5.0
 
 Summary:	freedesktop.org standards implementation for the EFL
 Summary(pl.UTF-8):	Implementacja standardów freedesktop.org dla EFL
 Name:		efreet
-Version:	1.0.1
+Version:	1.1.0
 Release:	1
 License:	BSD
 Group:		X11/Libraries
 Source0:	http://download.enlightenment.org/releases/%{name}-%{version}.tar.bz2
-# Source0-md5:	f9f6b4767faf7df9dbc87c97a99cc000
+# Source0-md5:	286b7d66ede62c87f4effef938c2ee7e
 URL:		http://trac.enlightenment.org/e/wiki/Efreet
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.6
 BuildRequires:	ecore-devel >= %{ecore_ver}
 BuildRequires:	ecore-file-devel >= %{ecore_ver}
 BuildRequires:	eet-devel >= %{eet_ver}
+BuildRequires:	eina-devel >= %{eina_ver}
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.22
-Requires:	eet >= %{eet_ver}
 Requires:	ecore >= %{ecore_ver}
 Requires:	ecore-file >= %{ecore_ver}
+Requires:	eet >= %{eet_ver}
+Requires:	eina-devel >= %{eina_ver}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -63,6 +66,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	ecore-devel >= %{ecore_ver}
 Requires:	ecore-file-devel >= %{ecore_ver}
 Requires:	eet-devel >= %{eet_ver}
+Requires:	eina-devel >= %{eina_ver}
 
 %description devel
 Header files for Efreet.
@@ -114,7 +118,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS COPYING ChangeLog README TODO
+%doc AUTHORS COPYING ChangeLog NEWS README TODO
+%attr(755,root,root) %{_bindir}/efreet_icon_cache_dump
 %attr(755,root,root) %{_libdir}/libefreet.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libefreet.so.1
 %attr(755,root,root) %{_libdir}/libefreet_mime.so.*.*.*
@@ -123,6 +128,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libefreet_trash.so.1
 %dir %{_libdir}/efreet
 %attr(755,root,root) %{_libdir}/efreet/efreet_desktop_cache_create
+%attr(755,root,root) %{_libdir}/efreet/efreet_icon_cache_create
 
 %files devel
 %defattr(644,root,root,755)
