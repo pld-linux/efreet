@@ -10,7 +10,7 @@ Summary:	freedesktop.org standards implementation for the EFL
 Summary(pl.UTF-8):	Implementacja standardów freedesktop.org dla EFL
 Name:		efreet
 Version:	1.1.0
-Release:	2
+Release:	3
 License:	BSD
 Group:		X11/Libraries
 Source0:	http://download.enlightenment.org/releases/%{name}-%{version}.tar.bz2
@@ -27,7 +27,7 @@ BuildRequires:	pkgconfig >= 1:0.22
 Requires:	ecore >= %{ecore_ver}
 Requires:	ecore-file >= %{ecore_ver}
 Requires:	eet >= %{eet_ver}
-Requires:	eina-devel >= %{eina_ver}
+Requires:	eina >= %{eina_ver}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
