@@ -2,19 +2,19 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
-%define		ecore_ver	1.1.0
-%define		eina_ver	1.1.0
-%define		eet_ver		1.5.0
+%define		ecore_ver	1.2.0
+%define		eina_ver	1.2.0
+%define		eet_ver		1.6.0
 
 Summary:	freedesktop.org standards implementation for the EFL
 Summary(pl.UTF-8):	Implementacja standardów freedesktop.org dla EFL
 Name:		efreet
-Version:	1.1.0
-Release:	3
+Version:	1.2.0
+Release:	1
 License:	BSD
 Group:		X11/Libraries
 Source0:	http://download.enlightenment.org/releases/%{name}-%{version}.tar.bz2
-# Source0-md5:	286b7d66ede62c87f4effef938c2ee7e
+# Source0-md5:	e813a47a222ee94e6bddd25bed7c85b8
 URL:		http://trac.enlightenment.org/e/wiki/Efreet
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.6
