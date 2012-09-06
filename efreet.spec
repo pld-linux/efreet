@@ -2,19 +2,19 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
-%define		ecore_ver	1.2.0
-%define		eina_ver	1.2.0
-%define		eet_ver		1.6.0
+%define		ecore_ver	1.7.0
+%define		eina_ver	1.7.0
+%define		eet_ver		1.7.0
 
 Summary:	freedesktop.org standards implementation for the EFL
 Summary(pl.UTF-8):	Implementacja standardów freedesktop.org dla EFL
 Name:		efreet
-Version:	1.2.0
+Version:	1.7.0
 Release:	1
 License:	BSD
 Group:		X11/Libraries
 Source0:	http://download.enlightenment.org/releases/%{name}-%{version}.tar.bz2
-# Source0-md5:	e813a47a222ee94e6bddd25bed7c85b8
+# Source0-md5:	5ebf93718ac0a5fedf0a3c72e34d7021
 URL:		http://trac.enlightenment.org/e/wiki/Efreet
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.6
@@ -22,6 +22,7 @@ BuildRequires:	ecore-devel >= %{ecore_ver}
 BuildRequires:	ecore-file-devel >= %{ecore_ver}
 BuildRequires:	eet-devel >= %{eet_ver}
 BuildRequires:	eina-devel >= %{eina_ver}
+BuildRequires:	gettext-devel >= 0.17
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.22
 Requires:	ecore >= %{ecore_ver}
@@ -90,6 +91,7 @@ Statyczna biblioteka Efreet.
 %setup -q
 
 %build
+%{__gettextize}
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
@@ -110,13 +112,15 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} $RPM_BUILD_ROOT%{_bindir}/efreet_{alloc,menu_alloc,test,spec_test,cache_test}
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/%{name}/test
 
+%find_lang %{name}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/efreet_icon_cache_dump
