@@ -23,7 +23,7 @@ BuildRequires:	ecore-devel >= %{ecore_ver}
 BuildRequires:	ecore-file-devel >= %{ecore_ver}
 BuildRequires:	eet-devel >= %{eet_ver}
 BuildRequires:	eina-devel >= %{eina_ver}
-BuildRequires:	gettext-devel >= 0.17
+BuildRequires:	gettext-tools >= 0.17
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.22
 Requires:	ecore >= %{ecore_ver}
